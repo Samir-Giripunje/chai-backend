@@ -2,6 +2,7 @@ import express from "express";
 import cors from "cors"
 import cookieParser from "cookie-parser";
 
+const app= express()
 //cors setting
 app.use(cors({
     origin: process.env.CORS_ORIGIN,
@@ -25,5 +26,13 @@ app.use(express.static("public"))
 //for doing crud operation on the cookies for safty 
 app.use(cookieParser())
 
-const app= express()
+
+
+//routes import
+import userRouter from './routes/user.routes.js'
+
+
+//routes declaration
+app.use('/api/v1/users',userRouter)
+
 export default app
